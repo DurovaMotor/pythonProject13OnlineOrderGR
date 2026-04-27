@@ -554,6 +554,7 @@
               '<strong class="manual-box__value" data-qty-display>' + formatNumber(quantity) + '</strong>' +
             '</div>' +
             '<button class="control-btn control-btn--plain" type="button" data-action="plus10">+10</button>' +
+            '<button class="control-btn control-btn--plain" type="button" data-action="plus100">+100</button>' +
           '</div>' +
         '</div>' +
       '</article>';
@@ -589,6 +590,8 @@
           changeCartQuantity(part, -10);
         } else if (action === "plus10") {
           changeCartQuantity(part, 10);
+        } else if (action === "plus100") {
+          changeCartQuantity(part, 100);
         }
       });
     });
@@ -673,6 +676,8 @@
         changeCartQuantity(item, -10);
       } else if (button.getAttribute("data-cart-action") === "plus10") {
         changeCartQuantity(item, 10);
+      } else if (button.getAttribute("data-cart-action") === "plus100") {
+        changeCartQuantity(item, 100);
       }
     });
 
@@ -754,6 +759,7 @@
                 '<strong class="manual-box__value">' + formatNumber(item.quantity) + "</strong>" +
               "</div>" +
               '<button class="control-btn control-btn--plain" type="button" data-cart-action="plus10" data-code="' + escapeHtml(item.code) + '">+10</button>' +
+              '<button class="control-btn control-btn--plain" type="button" data-cart-action="plus100" data-code="' + escapeHtml(item.code) + '">+100</button>' +
             "</div>" +
           "</div>" +
         "</article>";
