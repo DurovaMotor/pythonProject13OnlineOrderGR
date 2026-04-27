@@ -134,6 +134,7 @@
     state.catalog = getCatalog();
     initLanguageSwitchers();
     initCartShell();
+    initImageProtection();
     initPage();
     applyLanguage();
   }
@@ -242,6 +243,18 @@
     });
   }
 
+  function initImageProtection() {
+    var protectedSelector = "img, [data-protected-image], .home-bike-link__visual, .part-row__image-box, .cart-item__image";
+
+    ["contextmenu", "dragstart", "selectstart"].forEach(function (eventName) {
+      document.addEventListener(eventName, function (event) {
+        if (event.target.closest(protectedSelector)) {
+          event.preventDefault();
+        }
+      }, true);
+    });
+  }
+
   function renderHome() {
     if (document.body.getAttribute("data-page") !== "home") {
       return;
@@ -254,6 +267,8 @@
     if (image) {
       image.src = "./" + state.catalog.model.motorPicture;
       image.alt = state.catalog.model.name;
+      image.draggable = false;
+      image.setAttribute("data-protected-image", "");
     }
 
     if (label) {
@@ -541,7 +556,7 @@
     return '' +
       '<article class="part-row" data-part-code="' + escapeHtml(part.code) + '">' +
         '<div class="part-row__image-box">' +
-          '<img class="part-row__image" src="' + resolveImage(part) + '" alt="' + escapeHtml(getPartName(part)) + '" loading="lazy">' +
+          '<img class="part-row__image" src="' + resolveImage(part) + '" alt="' + escapeHtml(getPartName(part)) + '" loading="lazy" draggable="false" data-protected-image>' +
         '</div>' +
         '<div class="part-row__body">' +
           '<div class="part-row__title">' + escapeHtml(getPartName(part)) + '</div>' +
@@ -747,7 +762,7 @@
     itemsHost.innerHTML = summary.items.map(function (item) {
       return '' +
         '<article class="cart-item">' +
-          '<img class="cart-item__image" src="' + resolveImage(item) + '" alt="' + escapeHtml(getPartName(item)) + '">' +
+          '<img class="cart-item__image" src="' + resolveImage(item) + '" alt="' + escapeHtml(getPartName(item)) + '" draggable="false" data-protected-image>' +
           '<div class="cart-item__body">' +
             '<div class="cart-item__name">' + escapeHtml(getPartName(item)) + '</div>' +
             '<div class="cart-item__code">' + t("code_label") + ': ' + escapeHtml(item.code) + '</div>' +
