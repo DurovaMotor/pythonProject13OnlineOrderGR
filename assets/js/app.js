@@ -24,8 +24,8 @@
       loading_more: "Chargement...",
       no_parts: "Aucune pièce.",
       code_label: "Code",
-      latest_price_label: "Prix recent",
-      price_unavailable: "Prix recent indisponible",
+      latest_price_label: "Prices",
+      price_unavailable: "Prices unavailable",
       qty_label: "Qté",
       cart_label: "Panier",
       cart_title: "Panier",
@@ -61,8 +61,8 @@
       loading_more: "Loading...",
       no_parts: "No parts found.",
       code_label: "Code",
-      latest_price_label: "Latest price",
-      price_unavailable: "Latest price unavailable",
+      latest_price_label: "Prices",
+      price_unavailable: "Prices unavailable",
       qty_label: "Qty",
       cart_label: "Cart",
       cart_title: "Cart",
@@ -98,8 +98,8 @@
       loading_more: "جارٍ التحميل...",
       no_parts: "لا توجد قطع.",
       code_label: "الرمز",
-      latest_price_label: "Latest price",
-      price_unavailable: "Latest price unavailable",
+      latest_price_label: "Prices",
+      price_unavailable: "Prices unavailable",
       qty_label: "الكمية",
       cart_label: "السلة",
       cart_title: "السلة",
@@ -785,14 +785,14 @@
     var lines = items.map(function (item, index) {
       var price = getLatestPrice(item);
       var subtotal = price == null ? "N/A" : formatPriceAmount(price * item.quantity);
-      return (index + 1) + ". " + getPartMessageName(item) + " | " + item.code + " | Qty: " + item.quantity + " | Latest Price: " + formatLatestPriceForMessage(item) + " | Subtotal: " + subtotal;
+      return (index + 1) + ". " + getPartMessageName(item) + " | " + item.code + " | Qty: " + item.quantity + " | Prices: " + formatLatestPriceForMessage(item) + " | Subtotal: " + subtotal;
     });
 
     return [
       "Hello HIGHTAC, I want to inquire about these parts:",
       "",
       "Model: " + modelName,
-      "Price basis: latest price",
+      "Price note: prices are based on 2023 data; final quotation applies.",
       "",
       lines.join("\n"),
       "",

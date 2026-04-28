@@ -157,6 +157,20 @@ img {
   padding-bottom: 172px;
 }
 
+.price-notice {
+  margin: 0 0 12px;
+  padding: 12px 16px;
+  border: 1px solid rgba(124, 231, 255, 0.18);
+  border-radius: 18px;
+  background: rgba(124, 231, 255, 0.08);
+  color: rgba(245, 249, 255, 0.92);
+  text-align: center;
+  font-size: 0.96rem;
+  font-weight: 800;
+  line-height: 1.35;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
 .panel-surface {
   position: relative;
   border: 1px solid var(--line);
