@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   var CART_KEY = "hightac-gr150-cart-v1";
   var SUBMISSION_KEY = "hightac-gr150-last-submission-v1";
   var LANG_KEY = "hightac-gr150-language-v1";
@@ -132,7 +132,11 @@
     observer: null
   };
 
-  document.addEventListener("DOMContentLoaded", init);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 
   function init() {
     state.catalog = getCatalog();
